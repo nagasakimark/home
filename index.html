@@ -1,249 +1,258 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Home</title>
-    <style>
-        body {
-            background-color: white;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            margin: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            width: 100%;
-        }
-        
-        .box {
-            height: 200px;
-            border: 2px solid black;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-        
-        .box:hover {
-            transform: scale(1.05);
-        }
-        
-        .box a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mark's Projects</title>
+<meta name="description" content="Games and classroom activities for ALTs, made in Nagasaki.">
+<meta name="theme-color" content="#2457E6">
+<link rel="icon" href="images/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Idea: the old plain thumbnail wall, kept simple, but sorted by what is new and what has just been updated. */
+  :root{
+    --bg:#F3F7FD; --card:#fff; --line:#DCE6F5;
+    --ink:#16244A; --ink-2:#55658A;
+    --blue:#2457E6; --blue-deep:#16349A;
+    --orange:#FF7A1A; --orange-dark:#D95E00;
+    --yellow:#FFC928; --green:#1FA35A;
+    --font:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Segoe UI",system-ui,sans-serif;
+    --shadow:0 4px 14px rgba(28,62,140,.09); --shadow-up:0 12px 28px rgba(28,62,140,.18);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:700;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+  img{display:block}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:10px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* top bar */
+  .top{background:#fff;border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:16px;min-height:76px;padding-block:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{width:44px;height:44px;flex:none}
+  .brand h1{margin:0;font-size:24px;line-height:1.1;font-weight:900}
+  .brand p{margin:2px 0 0;font-size:14px;color:var(--ink-2);font-weight:700}
+  .hub{margin-left:auto;display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border-radius:999px;padding:9px 20px 9px 18px;font-size:16px;font-weight:900;box-shadow:0 4px 0 var(--orange-dark);transition:transform .12s,box-shadow .12s}
+  .hub:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--orange-dark)}
+  .hub:active{transform:translateY(3px);box-shadow:0 1px 0 var(--orange-dark)}
+  .hub small{display:block;font-size:11.5px;font-weight:700;opacity:.9;line-height:1.1}
+  .hub b{display:block;line-height:1.15}
+  .hub svg{width:20px;height:20px;transition:transform .2s}
+  .hub:hover svg{transform:translateX(3px)}
+
+  /* filter */
+  .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0 6px}
+  .bar .label{font-size:14px;color:var(--ink-2);margin-right:4px}
+  .chip{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;font-size:15px;font-weight:800;transition:background .15s,border-color .15s,color .15s,transform .12s}
+  .chip:hover{border-color:var(--blue);transform:translateY(-1px)}
+  .chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  .chip .n{opacity:.65;margin-left:6px;font-weight:700}
+
+  /* sections */
+  section{margin-top:34px}
+  section[hidden]{display:none}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+  .sec-head h2{margin:0;font-size:24px;font-weight:900}
+  .sec-head span{font-size:14px;color:var(--ink-2)}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px}
+
+  /* big cards (new) */
+  .feature{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .big{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);background:var(--card);border:1.5px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.3,1.4,.5,1),box-shadow .2s;animation:in .5s cubic-bezier(.2,.8,.3,1) backwards;animation-delay:calc(var(--n,0)*70ms)}
+  .big:hover{transform:translateY(-4px);box-shadow:var(--shadow-up)}
+  .big .pic{position:relative;min-height:190px;background:var(--blue-deep)}
+  .big .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s,transform .4s}
+  .big:hover .pic img{transform:scale(1.04)}
+  .big .txt{padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+  .big h3{margin:0;font-size:22px;line-height:1.2;font-weight:900}
+  .big p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+  .big .go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;border-radius:999px;padding:7px 18px 7px 12px;font-size:15px;font-weight:900;box-shadow:0 3px 0 var(--orange-dark)}
+  .go svg{width:16px;height:16px;fill:#fff}
+
+  /* standard cards */
+  .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  .card{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.3,1.4,.5,1),box-shadow .2s;animation:in .5s cubic-bezier(.2,.8,.3,1) backwards;animation-delay:calc(var(--n,0)*35ms)}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-up)}
+  .card:active,.big:active{transform:scale(.985)}
+  .card .pic{position:relative;aspect-ratio:16/10;background:var(--blue-deep);overflow:hidden}
+  .card .pic img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s,transform .4s}
+  .card:hover .pic img{transform:scale(1.05)}
+  .pic img.ld{opacity:1}
+  .card .body{padding:11px 14px 13px;display:flex;flex-direction:column;gap:3px;flex:1}
+  .card h3{margin:0;font-size:16.5px;line-height:1.25;font-weight:900}
+  .card p{margin:0;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+  .meta{margin-top:auto;padding-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);font-weight:800}
+  .tag{border-radius:999px;padding:2px 9px;font-size:12px;font-weight:900;background:#E8F0FF;color:var(--blue)}
+  .tag.class{background:#EEF1F6;color:#55658A}
+  .skills{display:flex;gap:6px;flex-wrap:wrap}
+  .skills span{background:#F1F5FC;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:800;color:var(--ink-2)}
+
+  /* badges */
+  .badge{position:absolute;left:10px;top:10px;z-index:2;border-radius:999px;padding:3px 11px;font-size:12px;font-weight:900;letter-spacing:.05em;box-shadow:0 2px 0 rgba(0,0,0,.18);transform:rotate(-3deg)}
+  .badge.new{background:var(--yellow);color:var(--ink);animation:wob 2.6s ease-in-out infinite}
+  .badge.upd{background:var(--green);color:#fff}
+  @keyframes wob{50%{transform:rotate(2deg) scale(1.07)}}
+  @keyframes in{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+
+  footer{margin:56px 0 0;background:var(--blue-deep);color:#fff}
+  footer .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-block:20px}
+  footer svg{width:34px;height:34px}
+  footer p{margin:0;font-size:14.5px;font-weight:800}
+  footer a{margin-left:auto;font-size:14px;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+
+  @media (max-width:1100px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (max-width:860px){
+    .feature{grid-template-columns:1fr}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 16px}
+    .top .wrap{flex-wrap:wrap}
+    .hub{margin-left:0;width:100%;justify-content:center}
+    .brand h1{font-size:21px}
+    .big{grid-template-columns:1fr}
+    .big .pic{min-height:0;aspect-ratio:16/9}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .card .body{padding:9px 11px 11px}
+    .card h3{font-size:15px}
+    .card p{display:none}
+    .sec-head h2{font-size:21px}
+  }
+  @media (max-width:380px){.grid{grid-template-columns:1fr}.card p{display:block}}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="projects-grid">
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/type" target="_blank">
-                    <img src="./images/type.png" alt="Typing Master">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/hop" target="_blank">
-                    <img src="./images/hop.png" alt="Megane Hop">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/witchsoup" target="_blank">
-                    <img src="./images/witchsoup.png" alt="Witch's soup">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/ukexpress" target="_blank">
-                    <img src="./images/ukexpress.png" alt="UK Express">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/dashboard" target="_blank">
-                    <img src="./images/dashboard.png" alt="Dashboard">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/hamanomachi3" target="_blank">
-                    <img src="./images/hamanomachi3.png" alt="Hamanomachi 3">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/chef" target="_blank">
-                    <img src="./images/chef.png" alt="Tomachi Chef">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/football" target="_blank">
-                    <img src="./images/football.png" alt="Pokemon Soccer">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/slot" target="_blank">
-                    <img src="./images/slot.png" alt="Slots">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/guesswho" target="_blank">
-                    <img src="./images/guesswho.png" alt="Guess Who">
-                </a>
-            </div>
-			<div class="box">
-                <a href="https://nagasakimark.github.io/statiq" target="_blank">
-                    <img src="./images/statiq.png" alt="Statiq Office">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/tescodle" target="_blank">
-                    <img src="./images/tescodle.png" alt="tescodle">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/worldheritageguesser" target="_blank">
-                    <img src="./images/worldheritageguesser.png" alt="World Heritage Guesser">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/tomachistore" target="_blank">
-                    <img src="./images/tomachistore.png" alt="Tomachi Store">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/digitalenglishboard" target="_blank">
-                    <img src="./images/digitalenglishboard.png" alt="Digital English Board">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/splatoon" target="_blank">
-                    <img src="./images/splatoon.png" alt="Splatoon">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/poll" target="_blank">
-                    <img src="./images/poll.png" alt="Classroom Polls">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/cashregister2" target="_blank">
-                    <img src="./images/restaurant2.png" alt="Cash Register 2">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/trickortreat" target="_blank">
-                    <img src="./images/trickortreat.png" alt="Trick or Treat">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/witchsoup" target="_blank">
-                    <img src="./images/magicsoup.png" alt="Magic Soup">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/hamanomachi2" target="_blank">
-                    <img src="./images/hamanomachi2.png" alt="Hamanomachi 2">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/hamanomachi2audio" target="_blank">
-                    <img src="./images/hamanomachi2audio.png" alt="Hamanomachi 2 Audio">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/champon2" target="_blank">
-                    <img src="./images/champon2.png" alt="Champon Maker 2">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/worksheetgenerator" target="_blank">
-                    <img src="./images/worksheetgenerator.png" alt="Worksheet Generator">
-                </a>
-            </div>
-            <div class="box">
-                <a href="https://nagasakimark.github.io/howdoyouspell" target="_blank">
-                    <img src="./images/howdoyouspell.png" alt="How do you spell...?">
-                </a>
-            </div>
-            <div class="box">
-                <a href="https://nagasakimark.github.io/wordle" target="_blank">
-                    <img src="./images/wordle.png" alt="Wordle">
-                </a>
-            </div>
-		    <div class="box">
-                <a href="https://nagasakimark.github.io/japanguesser" target="_blank">
-                    <img src="./images/japanguesser.png" alt="Japan Guesser">
-                </a>
-            </div>
-            <div class="box">
-                <a href="https://nagasakimark.github.io/globeguesser" target="_blank">
-                    <img src="./images/globeguesser.png" alt="Globe Guesser">
-                </a>
-            </div>
-            <div class="box">
-                <a href="https://nagasakimark.github.io/shaperunner/" target="_blank">
-                    <img src="./images/shapes.png" alt="Shape Runner">
-                </a>
-            </div>
-            
-            <div class="box">
-                <a href="https://nagasakimark.github.io/ALTPlanner/" target="_blank">
-                    <img src="./images/planner.png" alt="ALT Planner">
-                </a>
-            </div>
-            
-            <div class="box">
-                <a href="https://nagasakimark.github.io/cashregister/" target="_blank">
-                    <img src="./images/restaurant.png" alt="Cash Register">
-                </a>
-            </div>
-            
-            <div class="box">
-                <a href="https://nagasakimark.github.io/sortinghat/" target="_blank">
-                    <img src="./images/hogwarts.png" alt="Sorting Hat">
-                </a>
-            </div>
-            
-            <div class="box">
-                <a href="https://nagasakimark.github.io/champon" target="_blank">
-                    <img src="./images/champon.png" alt="Champon">
-                </a>
-            </div>
-            
-            <div class="box">
-                <a href="https://nagasakimark.github.io/hamanomachi" target="_blank">
-                    <img src="./images/hamanomachi.png" alt="Hamanomachi">
-                </a>
-            </div>
-        </div>
-    </div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="31" fill="#FF7A1A"/>
+      <path d="M17 17h30a7 7 0 0 1 7 7v14a7 7 0 0 1-7 7H31l-9 8v-8h-5a7 7 0 0 1-7-7V24a7 7 0 0 1 7-7z" fill="#fff"/>
+      <path d="M28 23.5v15a1.3 1.3 0 0 0 2 1.1l11.5-7.5a1.3 1.3 0 0 0 0-2.2L30 22.4a1.3 1.3 0 0 0-2 1.1z" fill="#FF7A1A"/>
+      <path d="M52 6l1.8 4.4 4.4 1.8-4.4 1.8L52 18.4l-1.8-4.4-4.4-1.8 4.4-1.8z" fill="#FFC928"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Mark's Projects home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#logo"/></svg>
+      <span><h1>Mark's Projects</h1><p>Games and classroom activities, made in Nagasaki</p></span>
+    </a>
+    <a class="hub" href="https://nagasakimark.github.io/games/">
+      <span><small>For students</small><b>Games hub</b></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="bar" id="bar" role="group" aria-label="Show">
+    <span class="label">Show</span>
+  </div>
+  <section id="secNew" aria-labelledby="hNew"><div class="sec-head"><h2 id="hNew"><span class="dot" style="background:var(--yellow)"></span>New</h2><span>Made in the last two weeks</span></div><div class="feature" id="gNew"></div></section>
+  <section id="secUpd" aria-labelledby="hUpd"><div class="sec-head"><h2 id="hUpd"><span class="dot" style="background:var(--green)"></span>Recently updated</h2><span>Improved in the last two weeks</span></div><div class="grid" id="gUpd"></div></section>
+  <section id="secAll" aria-labelledby="hAll"><div class="sec-head"><h2 id="hAll"><span class="dot" style="background:var(--blue)"></span>All projects</h2><span id="allNote">Most recent first</span></div><div class="grid" id="gAll"></div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#logo"/></svg>
+    <p>Made in Nagasaki by Mark</p>
+    <a href="https://nagasakimark.github.io/games/">Student games hub</a>
+  </div>
+</footer>
+
+<script src="projects.js"></script>
+<script>
+  /* The list lives in projects.js. Edit that file, not this one. */
+  const NEW_DAYS = 14, UPDATE_DAYS = 14;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const parseDate = v => { const m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec((v || "").trim()); return m ? new Date(+m[1], m[2] - 1, +m[3]) : null; };
+  const daysAgo = d => (Date.now() - d.getTime()) / 864e5;
+  const PLAY = '<svg viewBox="0 0 24 24"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>';
+
+  function parse(text){
+    const out = [];
+    String(text || "").split(/\n\s*\n/).forEach((block, pos) => {
+      const f = {};
+      block.split("\n").forEach(line => { const m = line.match(/^\s*([a-zA-Z]+)\s*[:：]\s*(.*)$/); if (m) f[m[1].toLowerCase()] = m[2].trim(); });
+      if (!Object.keys(f).length) return;
+      if (!f.name || !f.link || !f.image) { console.warn("projects.js: a project needs name, link and image", f); return; }
+      const created = parseDate(f.created), updated = parseDate(f.updated);
+      const forceNew = /^(yes|y|true|new)$/i.test(f.new || "");
+      const isNew = forceNew || (created && daysAgo(created) <= NEW_DAYS);
+      out.push({ pos, name:f.name, link:f.link, img:f.image, about:f.about || "", skills:(f.skills || "").split(",").map(s => s.trim()).filter(Boolean),
+        student:/^student/i.test(f.type || ""), created, updated, isNew,
+        isUpd: !isNew && !!updated && daysAgo(updated) <= UPDATE_DAYS });
+    });
+    return out;
+  }
+  const ALL = parse(window.PROJECTS_TEXT);
+  const stamp = p => (p.updated || p.created || new Date(0)).getTime();
+  const byRecent = (a, b) => (stamp(b) - stamp(a)) || ((b.created || 0) - (a.created || 0)) || (a.pos - b.pos);
+  const NEW = ALL.filter(p => p.isNew).sort((a, b) => ((b.created || 0) - (a.created || 0)) || byRecent(a, b));
+  const UPD = ALL.filter(p => p.isUpd).sort(byRecent);
+  const REST = ALL.filter(p => !p.isNew && !p.isUpd).sort(byRecent);
+
+  const thisYear = new Date().getFullYear();
+  const fmt = d => d.toLocaleDateString("en-GB", { day:"numeric", month:"short", ...(d.getFullYear() !== thisYear ? { year:"numeric" } : {}) });
+  function dateLine(p){
+    if (p.updated && (!p.created || p.updated.getTime() !== p.created.getTime())) return "Updated " + fmt(p.updated);
+    const d = p.created || p.updated; return d ? "Added " + fmt(d) : "";
+  }
+  const badge = p => p.isNew ? '<span class="badge new">NEW</span>' : p.isUpd ? '<span class="badge upd">UPDATED</span>' : "";
+  const tag = p => p.student ? '<span class="tag">Student game</span>' : '<span class="tag class">Class activity</span>';
+  const skills = p => p.skills.length ? `<div class="skills">${p.skills.map(s => `<span>${esc(s)}</span>`).join("")}</div>` : "";
+
+  const big = (p, n) => `
+    <a class="big" href="${esc(p.link)}" target="_blank" rel="noopener" style="--n:${n}">
+      <div class="pic">${badge(p)}<img src="${esc(p.img)}" alt="" width="960" height="506"></div>
+      <div class="txt">${tag(p)}<h3>${esc(p.name)}</h3>${p.about ? `<p>${esc(p.about)}</p>` : ""}${skills(p)}
+        <span class="go">${PLAY}Play</span></div>
+    </a>`;
+  const small = (p, n) => `
+    <a class="card" href="${esc(p.link)}" target="_blank" rel="noopener" style="--n:${Math.min(n, 14)}">
+      <div class="pic">${badge(p)}<img src="${esc(p.img)}" alt="" loading="lazy" width="800" height="500"></div>
+      <div class="body"><h3>${esc(p.name)}</h3>${p.about ? `<p>${esc(p.about)}</p>` : ""}
+        <div class="meta">${tag(p)}<span>${dateLine(p)}</span></div></div>
+    </a>`;
+
+  let filter = "all";
+  function render(){
+    const ok = p => filter === "all" || (filter === "student" ? p.student : !p.student);
+    const sets = [["secNew", "gNew", NEW.filter(ok), big], ["secUpd", "gUpd", UPD.filter(ok), small], ["secAll", "gAll", REST.filter(ok), small]];
+    sets.forEach(([sec, g, list, tpl]) => {
+      $(g).innerHTML = list.map((p, i) => tpl(p, i)).join("");
+      $(sec).hidden = !list.length;
+    });
+    $("allNote").textContent = (NEW.length + UPD.length) ? "Most recent first" : "Newest first";
+    document.querySelectorAll(".pic img").forEach(im => {
+      const ok2 = () => im.classList.add("ld"), bad = () => { im.style.display = "none"; };
+      if (im.complete) (im.naturalWidth ? ok2() : bad()); else { im.onload = ok2; im.onerror = bad; }
+    });
+    document.querySelectorAll(".big .pic img").forEach(im => { if (im.complete && im.naturalWidth) im.style.opacity = 1; else im.addEventListener("load", () => im.style.opacity = 1); });
+  }
+  const count = f => ALL.filter(p => f === "all" || (f === "student" ? p.student : !p.student)).length;
+  const bar = $("bar");
+  [["all", "All"], ["student", "Student games"], ["class", "Class activities"]].forEach(([id, label]) => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.type = "button"; b.dataset.f = id; b.setAttribute("aria-pressed", id === "all");
+    b.innerHTML = `${label}<span class="n">${count(id)}</span>`; bar.appendChild(b);
+  });
+  bar.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    filter = b.dataset.f; bar.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render();
+  });
+  render();
+</script>
 </body>
 </html>
-
-
