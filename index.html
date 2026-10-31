@@ -36,7 +36,6 @@
   .brand{display:flex;align-items:center;gap:12px}
   .brand svg{width:44px;height:44px;flex:none}
   .brand h1{margin:0;font-size:24px;line-height:1.1;font-weight:900}
-  .brand p{margin:2px 0 0;font-size:14px;color:var(--ink-2);font-weight:700}
   .hub{margin-left:auto;display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border-radius:999px;padding:9px 20px 9px 18px;font-size:16px;font-weight:900;box-shadow:0 4px 0 var(--orange-dark);transition:transform .12s,box-shadow .12s}
   .hub:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--orange-dark)}
   .hub:active{transform:translateY(3px);box-shadow:0 1px 0 var(--orange-dark)}
@@ -45,14 +44,8 @@
   .hub svg{width:20px;height:20px;transition:transform .2s}
   .hub:hover svg{transform:translateX(3px)}
 
-  /* filter */
-  .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0 6px}
-  .bar .label{font-size:14px;color:var(--ink-2);margin-right:4px}
-  .chip{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;font-size:15px;font-weight:800;transition:background .15s,border-color .15s,color .15s,transform .12s}
-  .chip:hover{border-color:var(--blue);transform:translateY(-1px)}
-  .chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-  .chip .n{opacity:.65;margin-left:6px;font-weight:700}
-
+  .warn{margin:22px 0 0;background:#FFF4D6;border:1.5px solid #F2D58A;border-radius:12px;padding:10px 14px;font-size:14px}
+  .warn[hidden]{display:none}
   /* sections */
   section{margin-top:34px}
   section[hidden]{display:none}
@@ -63,12 +56,12 @@
 
   /* big cards (new) */
   .feature{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-  .big{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);background:var(--card);border:1.5px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.3,1.4,.5,1),box-shadow .2s;animation:in .5s cubic-bezier(.2,.8,.3,1) backwards;animation-delay:calc(var(--n,0)*70ms)}
+  .big{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.3,1.4,.5,1),box-shadow .2s;animation:in .5s cubic-bezier(.2,.8,.3,1) backwards;animation-delay:calc(var(--n,0)*70ms)}
   .big:hover{transform:translateY(-4px);box-shadow:var(--shadow-up)}
-  .big .pic{position:relative;min-height:190px;background:var(--blue-deep)}
+  .big .pic{position:relative;aspect-ratio:760/400;background:var(--blue-deep)}
   .big .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s,transform .4s}
   .big:hover .pic img{transform:scale(1.04)}
-  .big .txt{padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+  .big .txt{flex:1;padding:16px 20px 18px;display:flex;flex-direction:column;gap:8px}
   .big h3{margin:0;font-size:22px;line-height:1.2;font-weight:900}
   .big p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
   .big .go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;border-radius:999px;padding:7px 18px 7px 12px;font-size:15px;font-weight:900;box-shadow:0 3px 0 var(--orange-dark)}
@@ -79,7 +72,7 @@
   .card{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.3,1.4,.5,1),box-shadow .2s;animation:in .5s cubic-bezier(.2,.8,.3,1) backwards;animation-delay:calc(var(--n,0)*35ms)}
   .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-up)}
   .card:active,.big:active{transform:scale(.985)}
-  .card .pic{position:relative;aspect-ratio:16/10;background:var(--blue-deep);overflow:hidden}
+  .card .pic{position:relative;aspect-ratio:760/400;background:var(--blue-deep);overflow:hidden}
   .card .pic img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s,transform .4s}
   .card:hover .pic img{transform:scale(1.05)}
   .pic img.ld{opacity:1}
@@ -87,10 +80,6 @@
   .card h3{margin:0;font-size:16.5px;line-height:1.25;font-weight:900}
   .card p{margin:0;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
   .meta{margin-top:auto;padding-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);font-weight:800}
-  .tag{border-radius:999px;padding:2px 9px;font-size:12px;font-weight:900;background:#E8F0FF;color:var(--blue)}
-  .tag.class{background:#EEF1F6;color:#55658A}
-  .skills{display:flex;gap:6px;flex-wrap:wrap}
-  .skills span{background:#F1F5FC;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:800;color:var(--ink-2)}
 
   /* badges */
   .badge{position:absolute;left:10px;top:10px;z-index:2;border-radius:999px;padding:3px 11px;font-size:12px;font-weight:900;letter-spacing:.05em;box-shadow:0 2px 0 rgba(0,0,0,.18);transform:rotate(-3deg)}
@@ -115,8 +104,6 @@
     .top .wrap{flex-wrap:wrap}
     .hub{margin-left:0;width:100%;justify-content:center}
     .brand h1{font-size:21px}
-    .big{grid-template-columns:1fr}
-    .big .pic{min-height:0;aspect-ratio:16/9}
     .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .card .body{padding:9px 11px 11px}
     .card h3{font-size:15px}
@@ -144,7 +131,7 @@
   <div class="wrap">
     <a class="brand" href="./" aria-label="Mark's Projects home">
       <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#logo"/></svg>
-      <span><h1>Mark's Projects</h1><p>Games and classroom activities, made in Nagasaki</p></span>
+      <h1>Mark's Projects</h1>
     </a>
     <a class="hub" href="https://nagasakimark.github.io/games/">
       <span><small>For students</small><b>Games hub</b></span>
@@ -154,9 +141,7 @@
 </header>
 
 <main class="wrap">
-  <div class="bar" id="bar" role="group" aria-label="Show">
-    <span class="label">Show</span>
-  </div>
+  <p class="warn" id="warn" hidden>The games list could not be loaded. Showing the extra projects only.</p>
   <section id="secNew" aria-labelledby="hNew"><div class="sec-head"><h2 id="hNew"><span class="dot" style="background:var(--yellow)"></span>New</h2><span>Made in the last two weeks</span></div><div class="feature" id="gNew"></div></section>
   <section id="secUpd" aria-labelledby="hUpd"><div class="sec-head"><h2 id="hUpd"><span class="dot" style="background:var(--green)"></span>Recently updated</h2><span>Improved in the last two weeks</span></div><div class="grid" id="gUpd"></div></section>
   <section id="secAll" aria-labelledby="hAll"><div class="sec-head"><h2 id="hAll"><span class="dot" style="background:var(--blue)"></span>All projects</h2><span id="allNote">Most recent first</span></div><div class="grid" id="gAll"></div></section>
@@ -170,33 +155,38 @@
   </div>
 </footer>
 
+<script src="https://nagasakimark.github.io/games/games.js"></script>
 <script src="projects.js"></script>
 <script>
-  /* The list lives in projects.js. Edit that file, not this one. */
+  /* Hub games come from the hub's games.js (add them there, once).
+     Extra projects come from projects.js. Edit those files, not this one. */
+  const HUB = "https://nagasakimark.github.io/games/";
   const NEW_DAYS = 14, UPDATE_DAYS = 14;
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const parseDate = v => { const m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec((v || "").trim()); return m ? new Date(+m[1], m[2] - 1, +m[3]) : null; };
+  const parseDate = v => { const m = /^(\d{4})\D+(\d{1,2})\D+(\d{1,2})/.exec((v || "").trim()); return m ? new Date(+m[1], m[2] - 1, +m[3]) : null; };
   const daysAgo = d => (Date.now() - d.getTime()) / 864e5;
   const PLAY = '<svg viewBox="0 0 24 24"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>';
 
-  function parse(text){
+  function parse(text, hub){
     const out = [];
     String(text || "").split(/\n\s*\n/).forEach((block, pos) => {
       const f = {};
       block.split("\n").forEach(line => { const m = line.match(/^\s*([a-zA-Z]+)\s*[:：]\s*(.*)$/); if (m) f[m[1].toLowerCase()] = m[2].trim(); });
       if (!Object.keys(f).length) return;
-      if (!f.name || !f.link || !f.image) { console.warn("projects.js: a project needs name, link and image", f); return; }
-      const created = parseDate(f.created), updated = parseDate(f.updated);
-      const forceNew = /^(yes|y|true|new)$/i.test(f.new || "");
-      const isNew = forceNew || (created && daysAgo(created) <= NEW_DAYS);
-      out.push({ pos, name:f.name, link:f.link, img:f.image, about:f.about || "", skills:(f.skills || "").split(",").map(s => s.trim()).filter(Boolean),
-        student:/^student/i.test(f.type || ""), created, updated, isNew,
+      if (!f.name || !f.link || !f.image) { console.warn("a project needs name, link and image", f); return; }
+      const created = parseDate(f.added || f.created), updated = parseDate(f.updated);
+      const isNew = !!created && daysAgo(created) <= NEW_DAYS;
+      const img = /^(https?:)?\/\//.test(f.image) ? f.image : (hub ? HUB : "") + f.image.replace(/^\.?\//, "");
+      out.push({ pos: (hub ? 0 : 1e4) + pos, name: hub ? (f.english || f.name) : f.name, link:f.link, img,
+        about: hub ? (f.summary || "") : (f.about || ""), created, updated, isNew,
         isUpd: !isNew && !!updated && daysAgo(updated) <= UPDATE_DAYS });
     });
     return out;
   }
-  const ALL = parse(window.PROJECTS_TEXT);
+  const hubList = parse(window.GAMES_TEXT, true);
+  if (!hubList.length) $("warn").hidden = false;
+  const ALL = hubList.concat(parse(window.PROJECTS_TEXT, false));
   const stamp = p => (p.updated || p.created || new Date(0)).getTime();
   const byRecent = (a, b) => (stamp(b) - stamp(a)) || ((b.created || 0) - (a.created || 0)) || (a.pos - b.pos);
   const NEW = ALL.filter(p => p.isNew).sort((a, b) => ((b.created || 0) - (a.created || 0)) || byRecent(a, b));
@@ -210,26 +200,22 @@
     const d = p.created || p.updated; return d ? "Added " + fmt(d) : "";
   }
   const badge = p => p.isNew ? '<span class="badge new">NEW</span>' : p.isUpd ? '<span class="badge upd">UPDATED</span>' : "";
-  const tag = p => p.student ? '<span class="tag">Student game</span>' : '<span class="tag class">Class activity</span>';
-  const skills = p => p.skills.length ? `<div class="skills">${p.skills.map(s => `<span>${esc(s)}</span>`).join("")}</div>` : "";
 
   const big = (p, n) => `
     <a class="big" href="${esc(p.link)}" target="_blank" rel="noopener" style="--n:${n}">
-      <div class="pic">${badge(p)}<img src="${esc(p.img)}" alt="" width="960" height="506"></div>
-      <div class="txt">${tag(p)}<h3>${esc(p.name)}</h3>${p.about ? `<p>${esc(p.about)}</p>` : ""}${skills(p)}
+      <div class="pic">${badge(p)}<img src="${esc(p.img)}" alt="" width="760" height="400"></div>
+      <div class="txt"><h3>${esc(p.name)}</h3>${p.about ? `<p>${esc(p.about)}</p>` : ""}
         <span class="go">${PLAY}Play</span></div>
     </a>`;
   const small = (p, n) => `
     <a class="card" href="${esc(p.link)}" target="_blank" rel="noopener" style="--n:${Math.min(n, 14)}">
-      <div class="pic">${badge(p)}<img src="${esc(p.img)}" alt="" loading="lazy" width="800" height="500"></div>
+      <div class="pic">${badge(p)}<img src="${esc(p.img)}" alt="" loading="lazy" width="760" height="400"></div>
       <div class="body"><h3>${esc(p.name)}</h3>${p.about ? `<p>${esc(p.about)}</p>` : ""}
-        <div class="meta">${tag(p)}<span>${dateLine(p)}</span></div></div>
+        <div class="meta"><span>${dateLine(p)}</span></div></div>
     </a>`;
 
-  let filter = "all";
   function render(){
-    const ok = p => filter === "all" || (filter === "student" ? p.student : !p.student);
-    const sets = [["secNew", "gNew", NEW.filter(ok), big], ["secUpd", "gUpd", UPD.filter(ok), small], ["secAll", "gAll", REST.filter(ok), small]];
+    const sets = [["secNew", "gNew", NEW, big], ["secUpd", "gUpd", UPD, small], ["secAll", "gAll", REST, small]];
     sets.forEach(([sec, g, list, tpl]) => {
       $(g).innerHTML = list.map((p, i) => tpl(p, i)).join("");
       $(sec).hidden = !list.length;
@@ -241,17 +227,6 @@
     });
     document.querySelectorAll(".big .pic img").forEach(im => { if (im.complete && im.naturalWidth) im.style.opacity = 1; else im.addEventListener("load", () => im.style.opacity = 1); });
   }
-  const count = f => ALL.filter(p => f === "all" || (f === "student" ? p.student : !p.student)).length;
-  const bar = $("bar");
-  [["all", "All"], ["student", "Student games"], ["class", "Class activities"]].forEach(([id, label]) => {
-    const b = document.createElement("button");
-    b.className = "chip"; b.type = "button"; b.dataset.f = id; b.setAttribute("aria-pressed", id === "all");
-    b.innerHTML = `${label}<span class="n">${count(id)}</span>`; bar.appendChild(b);
-  });
-  bar.addEventListener("click", e => {
-    const b = e.target.closest(".chip"); if (!b) return;
-    filter = b.dataset.f; bar.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render();
-  });
   render();
 </script>
 </body>
