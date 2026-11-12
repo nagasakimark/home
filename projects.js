@@ -32,6 +32,13 @@ updated: 2026-11-01
 
 window.PROJECTS_TEXT = `
 
+name: Let's Try! Digital Textbooks
+link: https://nagasakimark.github.io/letstry
+image: images/letstry.webp
+about: Let's Try! 1 & 2 with audio, videos, games and offline mode
+added: 2026-11-13
+updated: 2026-11-13
+
 name: Statiq Office
 link: https://nagasakimark.github.io/statiq
 image: images/statiq.webp
