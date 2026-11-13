@@ -32,6 +32,13 @@ updated: 2026-11-01
 
 window.PROJECTS_TEXT = `
 
+name: Cash Register
+link: https://nagasakimark.github.io/cashregister3/
+image: images/cashregister3.webp
+about: Restaurant roleplay - order, pay and give change in English
+added: 2026-11-13
+updated: 2026-11-13
+
 name: Let's Try! Digital Textbooks
 link: https://nagasakimark.github.io/letstry
 image: images/letstry.webp
@@ -98,12 +105,6 @@ link: https://nagasakimark.github.io/digitalenglishboard
 image: images/digitalenglishboard.webp
 added: 2025-12-05
 updated: 2025-12-08
-
-name: Cash Register 2
-link: https://nagasakimark.github.io/cashregister2
-image: images/cashregister2.webp
-added: 2025-11-10
-updated: 2025-11-10
 
 name: Trick or Treat
 link: https://nagasakimark.github.io/trickortreat
