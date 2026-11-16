@@ -32,6 +32,27 @@ updated: 2026-11-01
 
 window.PROJECTS_TEXT = `
 
+name: Mojimon
+link: https://nagasakimark.github.io/mojimon/
+image: images/mojimon.webp
+about: Pokemon-style letter battles - weaken and catch ABC monsters
+added: 2026-11-16
+updated: 2026-11-16
+
+name: Kirby's Bowling Challenge
+link: https://nagasakimark.github.io/bowling/
+image: images/bowling.webp
+about: Bowling quiz with Team Battle mode, using the Classroom Polls categories
+added: 2026-11-15
+updated: 2026-11-15
+
+name: Gone Fishing
+link: https://nagasakimark.github.io/fishing/
+image: images/fishing.webp
+about: Hook a sea animal, students name it, fill the bucket
+added: 2026-11-12
+updated: 2026-11-12
+
 name: Cash Register
 link: https://nagasakimark.github.io/cashregister3/
 image: images/cashregister3.webp
