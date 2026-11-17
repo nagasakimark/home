@@ -32,6 +32,13 @@ updated: 2026-11-01
 
 window.PROJECTS_TEXT = `
 
+name: Puzzle Sheet Generator
+link: https://nagasakimark.github.io/puzzlesheet/
+image: images/puzzlesheet.webp
+about: Double-sided word search, crossword, cryptogram and unscramble worksheets for any unit
+added: 2026-11-17
+updated: 2026-11-17
+
 name: Mojimon
 link: https://nagasakimark.github.io/mojimon/
 image: images/mojimon.webp

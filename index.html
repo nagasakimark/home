@@ -178,7 +178,7 @@
       const created = parseDate(f.added || f.created), updated = parseDate(f.updated);
       const isNew = !!created && daysAgo(created) <= NEW_DAYS;
       const img = /^(https?:)?\/\//.test(f.image) ? f.image : (hub ? HUB : "") + f.image.replace(/^\.?\//, "");
-      out.push({ pos: (hub ? 0 : 1e4) + pos, name: hub ? (f.english || f.name) : f.name, link:f.link, img,
+      out.push({ pos: (hub ? 0 : 1e4) + pos, name: hub ? (f.english || f.name) : f.name, link: (hub && f.altlink) || f.link, img,
         about: hub ? (f.summary || "") : (f.about || ""), created, updated, isNew,
         isUpd: !isNew && !!updated && daysAgo(updated) <= UPDATE_DAYS });
     });
