@@ -155,8 +155,14 @@
   </div>
 </footer>
 
-<script src="https://nagasakimark.github.io/games/games.js"></script>
-<script src="projects.js"></script>
+<script>
+  /* Load the two lists fresh every time (no old saved copy), so new projects show straight away. */
+  (function () {
+    var v = Date.now();
+    document.write('<script src="https://nagasakimark.github.io/games/games.js?v=' + v + '"><\/script>');
+    document.write('<script src="projects.js?v=' + v + '"><\/script>');
+  })();
+</script>
 <script>
   /* Hub games come from the hub's games.js (add them there, once).
      Extra projects come from projects.js. Edit those files, not this one. */
