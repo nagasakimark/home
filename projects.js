@@ -32,6 +32,13 @@ updated: 2026-11-01
 
 window.PROJECTS_TEXT = `
 
+name: Worksheet Generator
+link: https://nagasakimark.github.io/worksheet/
+image: images/worksheetgenerator.webp
+about: Tracing and four-line writing worksheets for any unit, the ABC, months and more
+added: 2026-11-20
+updated: 2026-11-20
+
 name: Puzzle Sheet Generator
 link: https://nagasakimark.github.io/puzzlesheet/
 image: images/puzzlesheet.webp
@@ -193,9 +200,5 @@ link: https://nagasakimark.github.io/champon
 image: images/champon.webp
 added: 2024-10-18
 updated: 2024-10-31
-
-name: Worksheet Generator
-link: https://nagasakimark.github.io/worksheetgenerator
-image: images/worksheetgenerator.webp
 
 `;
